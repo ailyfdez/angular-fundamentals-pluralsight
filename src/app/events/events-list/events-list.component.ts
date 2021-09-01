@@ -24,4 +24,7 @@ export class EventsListComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  handleEvent(param:any){
+    console.log(param)
+  }
 }

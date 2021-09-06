@@ -14,7 +14,4 @@ export class EventThumbnailComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  handleClickMe(){
-    this.eventClick.emit("casa");
-  }
 }

@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -8,31 +9,19 @@ export class EventService {
   constructor() { }
 
   getEvents() {
-return  EVENTS
+    let subject=new Subject();
+    setTimeout(() => {
+      subject.next(EVENTS);
+      subject.complete();
+    }, 200);
+    return subject;
+  }
+
+  getEvent(id: number) {
+    return EVENTS.find(x => x.id == id);
   }
 }
-const EVENTS = [{
-  id: 1,
-  name: 'angular connect',
-  date: '9/26/2036',
-  time: '10:00 am',
-  price: 599.99,
-  imageUrl: 'assets/images/angularconnect-shield.png',
-  location: {
-    address: '1057 DT',
-    city: 'London',
-    country: 'England'
-  }
-}, {
-  id: 2,
-  name: 'angular connect2',
-  date: '9/26/2036',
-  time: '8:00 am',
-  price: 599.99,
-  imageUrl: 'assets/images/angularconnect-shield.png',
-  location: {
-    address: '1058 DT',
-    city: 'London',
-    country: 'England'
-  }
-}]
+const EVENTS = [{ id: 1, name: 'Angular Connect', date: '9/26/2036', time: '10am', location: { address: '1 London Rd', city: 'London', country: 'England' } },
+{ id: 2, name: 'ng-nl', date: '4/15/2037', time: '9am', location: { address: '127 DT ', city: 'Amsterdam', country: 'NL' } },
+{ id: 3, name: 'ng-conf 2037', date: '4/15/2037', time: '9am', location: { address: 'The Palatial America Hotel', city: 'Salt Lake City', country: 'USA' } },
+{ id: 4, name: 'UN Angular Summit', date: '6/10/2037', time: '8am', location: { address: 'The UN Angular Center', city: 'New York', country: 'USA' } },]

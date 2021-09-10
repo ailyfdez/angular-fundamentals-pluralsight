@@ -1,30 +1,47 @@
-import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
-
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
-import { EventsListComponent } from './events/events-list/events-list.component';
-import { EventThumbnailComponent } from './events/event-thumbnail/event-thumbnail.component';
+import { NgModule } from '@angular/core'
+import { BrowserModule } from '@angular/platform-browser'
+import { AppComponent }  from './app.component'
+import { EventService,
+  EventsListComponent,
+  EventThumbnailComponent,
+  EventDetailComponent,
+  EventCreateComponent,
+  EventDetailsResolver,
+  EventListResolverService} from './events/index';
+import { AuthService } from './user/auth.service'
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NavbarComponent } from './nav/navbar/navbar.component';
-import { EventDetailComponent } from './events/event-detail/event-detail.component';
-import { EventCreateComponent } from './events/event-create/event-create.component';
+import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
-  declarations: [
-    AppComponent,
+  imports: [
+      BrowserModule,
+      FormsModule,
+      ReactiveFormsModule,
+      AppRoutingModule],
+  declarations: [ 
+    AppComponent, 
     EventsListComponent,
-    EventThumbnailComponent,
+    EventThumbnailComponent, 
     NavbarComponent,
     EventDetailComponent,
-    EventCreateComponent
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
-
-  
+    EventCreateComponent ],
+  providers: [
+    EventService, 
+    EventDetailsResolver,
+    EventListResolverService,
+    AuthService,
+    {
+      provide: 'canDeactivateCreateEvent', 
+      useValue: checkDirtyState     
+    }],
+  bootstrap: [ AppComponent ]
 })
 export class AppModule { }
+
+function checkDirtyState(component:EventCreateComponent) {
+  if (component.isDirty)
+    return window.confirm('You have not saved this event, Do you really want to cancel?') 
+
+  return true
+}

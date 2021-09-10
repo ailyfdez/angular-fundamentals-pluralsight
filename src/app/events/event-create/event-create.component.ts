@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EventCreateComponent implements OnInit {
 
+  isDirty: boolean = true
+
   constructor() { }
 
   ngOnInit(): void {

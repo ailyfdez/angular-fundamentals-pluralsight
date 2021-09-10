@@ -1,0 +1,7 @@
+export * from './event-create/event-create.component'
+export * from './event-thumbnail/event-thumbnail.component'
+export * from './shared/event-list-resolver.service'
+export * from './events-list/events-list.component'
+export * from './event-detail/event-detail.component'
+export * from './shared/event-details-resolver.service'
+export * from './shared/event.service'

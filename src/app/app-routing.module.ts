@@ -6,7 +6,7 @@ import { EventDetailComponent } from './events/event-detail/event-detail.compone
 import { EventsListComponent } from './events/events-list/events-list.component';
 import { EventListResolverService } from './events/shared/event-list-resolver.service';
 
-const routes: Routes = [
+export const routes: Routes = [
   { path: "events", component: EventsListComponent, resolve: { events: EventListResolverService } },
   {
     path:"events/new",
@@ -18,7 +18,7 @@ const routes: Routes = [
     canActivate: [EventDetailActivatorGuard],
     canDeactivate: [EventDetailActivatorGuard]
   },
-  
+  {path:"user", loadChildren: () => import('./user/user.module').then(m => m.UserModule)},
   { path: "", redirectTo: "/events", pathMatch: "full" }
 ];
 

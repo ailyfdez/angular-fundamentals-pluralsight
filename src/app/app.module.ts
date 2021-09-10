@@ -12,7 +12,6 @@ import { AuthService } from './user/auth.service'
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NavbarComponent } from './nav/navbar/navbar.component';
 import { AppRoutingModule } from './app-routing.module';
-
 @NgModule({
   imports: [
       BrowserModule,
@@ -25,7 +24,7 @@ import { AppRoutingModule } from './app-routing.module';
     EventThumbnailComponent, 
     NavbarComponent,
     EventDetailComponent,
-    EventCreateComponent ],
+    EventCreateComponent],
   providers: [
     EventService, 
     EventDetailsResolver,

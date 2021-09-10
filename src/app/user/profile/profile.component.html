@@ -6,13 +6,18 @@
       <div class="form-group" [ngClass]="{ 'error' : validateFirstName() }">
         <label for="firstName">First Name:</label>
         <em *ngIf="validateFirstName() && profileForm.controls?.firstName?.errors?.required">Required</em>
-        <em *ngIf="validateFirstName() && profileForm.controls?.firstName?.errors?.pattern">Must start with a letter</em>
-        <input id="firstName" type="text"  formControlName="firstName" class="form-control"
+        <em *ngIf="validateFirstName() && profileForm.controls?.firstName?.errors?.pattern">Must start with a
+          letter</em>
+        <em *ngIf="validateFirstName() && profileForm.controls?.firstName?.errors?.restrictedWords">Restricted word
+          found:{{profileForm.controls?.firstName?.errors?.restrictedWords}}</em>
+        <input id="firstName" type="text" formControlName="firstName" class="form-control"
           placeholder="First Name..." />
       </div>
       <div class="form-group" [ngClass]="{ 'error' : validateLastName() }">
         <label for="lastName">Last Name:</label>
-        <em *ngIf="validateLastName()">Required</em>
+        <em *ngIf="validateLastName()&& profileForm.controls?.lastName?.errors?.required ">Required</em>
+        <em *ngIf="validateLastName() && profileForm.controls?.lastName?.errors?.restrictedWords2">Restricted word
+          found:{{profileForm.controls?.lastName?.errors?.restrictedWords2}}</em>
         <input id="lastName" type="text" formControlName="lastName" class="form-control" placeholder="Last Name..." />
       </div>
       <button type="submit" class="btn btn-primary">Save</button>

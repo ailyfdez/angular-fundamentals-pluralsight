@@ -15,7 +15,7 @@ export class EventDetailComponent implements OnInit {
   constructor(private service: EventService, private route:ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.event = this.route.snapshot.data['event']
+    this.event = this.route.snapshot.data['event'];
   }
 
 }

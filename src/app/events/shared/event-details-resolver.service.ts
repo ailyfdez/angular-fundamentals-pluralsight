@@ -8,15 +8,15 @@ import { EventService } from '../shared/event.service'
 })
 
 export class EventDetailsResolver implements Resolve<any> {
-  constructor(private eventService:EventService, private router:Router) {}
+  constructor(private eventService: EventService, private router: Router) { }
 
   resolve(route: ActivatedRouteSnapshot) {
-    return this.eventService.getEvent(+route.params['id']).pipe(map((event: any)=> {
-        if (event) {
-          return event
-        } else {
-          this.router.navigate(['/404'])
-        }
-      }))
+    return this.eventService.getEvent(+route.params['id']).pipe(map((event: any) => {
+      if (event) {
+        return event
+      } else {
+        this.router.navigate(['/404'])
+      }
+    }))
   }
 }

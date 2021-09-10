@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { EventDetailsResolver } from './events';
 import { EventCreateComponent } from './events/event-create/event-create.component';
 import { EventDetailActivatorGuard } from './events/event-detail-activator.guard';
 import { EventDetailComponent } from './events/event-detail/event-detail.component';
@@ -16,7 +17,8 @@ export const routes: Routes = [
     path: "events/:id",
     component: EventDetailComponent,
     canActivate: [EventDetailActivatorGuard],
-    canDeactivate: [EventDetailActivatorGuard]
+    canDeactivate: [EventDetailActivatorGuard],
+    resolve: { event: EventDetailsResolver } 
   },
   {path:"user", loadChildren: () => import('./user/user.module').then(m => m.UserModule)},
   { path: "", redirectTo: "/events", pathMatch: "full" }

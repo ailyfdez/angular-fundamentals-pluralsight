@@ -12,6 +12,8 @@ import { AuthService } from './user/auth.service'
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NavbarComponent } from './nav/navbar/navbar.component';
 import { AppRoutingModule } from './app-routing.module';
+import { CollapsibleWellComponent } from './common/collapsible-well/collapsible-well.component';
+import { SessionListComponent } from './session/session-list/session-list.component';
 @NgModule({
   imports: [
       BrowserModule,
@@ -24,7 +26,9 @@ import { AppRoutingModule } from './app-routing.module';
     EventThumbnailComponent, 
     NavbarComponent,
     EventDetailComponent,
-    EventCreateComponent],
+    EventCreateComponent,
+    CollapsibleWellComponent,
+    SessionListComponent],
   providers: [
     EventService, 
     EventDetailsResolver,

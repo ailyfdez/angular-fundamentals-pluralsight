@@ -4,18 +4,18 @@ import { AuthService } from 'src/app/user/auth.service';
 import { VoterService } from '../voter.service';
 
 @Component({
-  selector: 'app-session-list',
+  selector: 'session-list',
   templateUrl: './session-list.component.html',
   styleUrls: ['./session-list.component.css']
 })
 export class SessionListComponent implements OnInit {
-  @Input() sessions: ISession[] = [];
+  @Input() sessions: ISession[] |undefined;
   @Input() filterBy!: string;
   @Input() sortBy!: string;
   @Input() eventId!: number;
-  visibleSessions: ISession[] = [];
+  visibleSessions: ISession[]|undefined;
 
-  constructor(private auth: AuthService, private voterService: VoterService) {
+  constructor(public auth: AuthService, private voterService: VoterService) {
 
   }
 
@@ -25,7 +25,7 @@ export class SessionListComponent implements OnInit {
   ngOnChanges() {
     if (this.sessions) {
       this.filterSessions(this.filterBy);
-      this.sortBy === 'name' ? this.visibleSessions.sort(sortByNameAsc) : this.visibleSessions.sort(sortByVotesDesc);
+      this.sortBy === 'name' ? this.visibleSessions?.sort(sortByNameAsc) : this.visibleSessions?.sort(sortByVotesDesc);
     }
   }
 
@@ -41,16 +41,16 @@ export class SessionListComponent implements OnInit {
     }
 
     if (this.sortBy === 'votes') {
-      this.visibleSessions.sort(sortByVotesDesc);
+      this.visibleSessions?.sort(sortByVotesDesc);
     }
   }
 
   filterSessions(filter: string) {
     if (filter == 'all') {
       // Create a clone  of the sessions variable. 
-      this.visibleSessions = this.sessions.slice(0);
+      this.visibleSessions = this.sessions?.slice(0);
     } else {
-      this.visibleSessions = this.sessions.filter(session => {
+      this.visibleSessions = this.sessions?.filter(session => {
         return session.level.toLocaleLowerCase() === filter;
       })
     }

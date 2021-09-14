@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { EventService } from '..';
 
 @Component({
-  selector: 'app-event-create',
+  selector: 'event-create',
   templateUrl: './event-create.component.html',
   styleUrls: ['./event-create.component.css']
 })

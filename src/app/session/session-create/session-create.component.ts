@@ -5,7 +5,7 @@ import { ISession } from 'src/app/events/event-model';
 import { restrictedWords } from 'src/app/events/shared/restricted-words-validator';
 
 @Component({
-  selector: 'app-session-create',
+  selector: 'session-create',
   templateUrl: './session-create.component.html',
   styleUrls: ['./session-create.component.css']
 })
@@ -18,7 +18,7 @@ export class SessionCreateComponent implements OnInit {
   presenter!: FormControl
   duration!: FormControl
   level!: FormControl
-  abstract: FormControl = new FormControl;
+  abstract!: FormControl ;
 
   constructor(@Inject(TOASTR_TOKEN) private toastr: Toastr, private fb: FormBuilder) {
     this.newSessionForm = fb.group({

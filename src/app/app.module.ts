@@ -14,6 +14,7 @@ import { NavbarComponent } from './nav/navbar/navbar.component';
 import { AppRoutingModule } from './app-routing.module';
 import { CollapsibleWellComponent } from './common/collapsible-well/collapsible-well.component';
 import { SessionListComponent } from './session/session-list/session-list.component';
+import { SessionCreateComponent } from './session/session-create/session-create.component';
 @NgModule({
   imports: [
       BrowserModule,
@@ -28,7 +29,8 @@ import { SessionListComponent } from './session/session-list/session-list.compon
     EventDetailComponent,
     EventCreateComponent,
     CollapsibleWellComponent,
-    SessionListComponent],
+    SessionListComponent,
+    SessionCreateComponent],
   providers: [
     EventService, 
     EventDetailsResolver,

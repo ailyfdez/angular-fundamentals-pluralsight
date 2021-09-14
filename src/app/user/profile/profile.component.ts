@@ -14,8 +14,8 @@ export class ProfileComponent implements OnInit {
 
   constructor(private router: Router, private authService: AuthService, private fb: FormBuilder) {
     this.profileForm = fb.group({
-      firstName: ['', [Validators.required, Validators.pattern('[a-zA-Z].*'), this.restrictedWords]],
-      lastName: ['', [Validators.required, Validators.pattern('[a-zA-Z].*'),this.restrictedWords2(['casa', 'foo'])]]
+      firstName: ['', [Validators.required, Validators.pattern('[a-zA-Z].*')]],
+      lastName: ['', [Validators.required, Validators.pattern('[a-zA-Z].*')]]
     })
   }
 
@@ -45,25 +45,4 @@ export class ProfileComponent implements OnInit {
     let lastName = this.profileForm.controls['lastName']
     return lastName.invalid && lastName.touched
   }
-
-  private restrictedWords(control: FormControl): any {
-    return control.value.includes('foo')
-      ? { 'restrictedWords': 'foo' }
-      : null;
-  }
-
-  private restrictedWords2(words: string[]) {
-    return (control: FormControl): any => {
-      if (!words) return null;
-
-      var invalidWords = words
-        .map((w: string) => control.value.includes(w) ? w : null)
-        .filter((w) => w !== null);
-
-      return invalidWords && invalidWords.length > 0
-        ? { 'restrictedWords2': invalidWords.join(', ') }
-        : null;
-    }
-  }
-
 }

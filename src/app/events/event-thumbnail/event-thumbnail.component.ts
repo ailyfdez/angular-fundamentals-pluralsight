@@ -7,7 +7,7 @@ import { IEvent } from '../event-model';
   styleUrls: ['./event-thumbnail.component.css']
 })
 export class EventThumbnailComponent implements OnInit {
-  @Input() event: IEvent={id:0,name:"",date:new Date, time:""};
+  @Input()  event!: IEvent;
   @Output() eventClick= new EventEmitter();
 
   constructor() { }

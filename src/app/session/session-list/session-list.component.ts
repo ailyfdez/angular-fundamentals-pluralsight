@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ISession } from 'src/app/events/event-model';
-import { AuthService } from 'src/app/user/auth.service';
-import { VoterService } from '../voter.service';
+import { VoterService } from 'src/app/services';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'session-list',

@@ -4,9 +4,7 @@ import { Observable, of } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { ISession } from '../events/event-model';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class VoterService {
   constructor(private http: HttpClient) {
 

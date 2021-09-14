@@ -1,28 +1,31 @@
 import { NgModule } from '@angular/core'
-import { BrowserModule } from '@angular/platform-browser'
+import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+
 import { AppComponent } from './app.component'
+import { AppRoutingModule } from './app-routing.module';
+
 import {
-  EventService,
   EventsListComponent,
   EventThumbnailComponent,
   EventDetailComponent,
   EventCreateComponent,
   EventDetailsResolver,
   EventListResolverService
-} from './events/index';
-import { AuthService } from './user/auth.service'
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+} from './events';
 import { NavbarComponent } from './nav/navbar/navbar.component';
-import { AppRoutingModule } from './app-routing.module';
-import { CollapsibleWellComponent } from './common/collapsible-well/collapsible-well.component';
-import { SessionListComponent } from './session/session-list/session-list.component';
-import { SessionCreateComponent } from './session/session-create/session-create.component';
+import {
+  SessionListComponent, SessionCreateComponent
+} from './session'
 import { DurationPipe } from './events/shared/duration.pipe';
-import { UpvoteComponent } from './session/upvote/upvote.component';
-import { VoterService } from './session/voter.service';
-import { HttpClientModule } from '@angular/common/http';
-import { Toastr, TOASTR_TOKEN } from './common/toastr.service';
-import { JQ_TOKEN } from './common/jquery.service';
+import {
+  UpvoteComponent
+} from './session'
+import { VoterService, EventService, AuthService } from './services';
+import {
+  Toastr, TOASTR_TOKEN, JQ_TOKEN, CollapsibleWellComponent, SimpleModalComponent, ModalTriggerDirective
+} from './common';
 
 let toastr: Toastr = (window as any)['toastr'];
 let jQuery: Object = (window as any)['$'];
@@ -44,7 +47,10 @@ let jQuery: Object = (window as any)['$'];
     CollapsibleWellComponent,
     SessionListComponent,
     SessionCreateComponent,
-    DurationPipe, UpvoteComponent,],
+    DurationPipe,
+    UpvoteComponent,
+    SimpleModalComponent,
+    ModalTriggerDirective,],
   providers: [
     EventService,
     EventDetailsResolver,

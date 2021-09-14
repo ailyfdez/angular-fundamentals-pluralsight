@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core'
 import { Resolve, ActivatedRouteSnapshot, Router } from '@angular/router'
 import { map } from 'rxjs/operators'
-import { EventService } from '../shared/event.service'
+import { EventService } from 'src/app/services'
 
 @Injectable({
   providedIn: 'root'

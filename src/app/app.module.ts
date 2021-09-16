@@ -24,7 +24,13 @@ import {
 } from './session'
 import { VoterService, EventService, AuthService } from './services';
 import {
-  Toastr, TOASTR_TOKEN, JQ_TOKEN, CollapsibleWellComponent, SimpleModalComponent, ModalTriggerDirective
+  Toastr,
+  TOASTR_TOKEN,
+  JQ_TOKEN,
+  CollapsibleWellComponent,
+  SimpleModalComponent,
+  ModalTriggerDirective,
+  LocationValidatorDirective
 } from './common';
 
 let toastr: Toastr = (window as any)['toastr'];
@@ -50,7 +56,8 @@ let jQuery: Object = (window as any)['$'];
     DurationPipe,
     UpvoteComponent,
     SimpleModalComponent,
-    ModalTriggerDirective,],
+    ModalTriggerDirective,
+    LocationValidatorDirective,],
   providers: [
     EventService,
     EventDetailsResolver,
